@@ -2,7 +2,7 @@ import * as actionTypes from '../action-types'
 
 const initialState = {
   load: false,
-  text: '',
+  content: null,
   error: null,
 }
 
@@ -11,7 +11,7 @@ const contentReducer = (state = initialState, action) => {
     case actionTypes.CONTENT_FETCH:
       return { ...state, load: true }
     case actionTypes.CONTENT_FETCHED:
-      return { ...state, load: false, text: action.payload }
+      return { ...state, load: false, content: action.payload }
     case actionTypes.CONTENT_FETCH_ERROR:
       return { ...state, load: false, error: action.payload }
     default:

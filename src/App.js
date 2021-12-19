@@ -1,12 +1,21 @@
+import { hot } from 'react-hot-loader/root'
+import { Routes, Route } from 'react-router-dom'
+import React from 'react'
 import './App.css'
-import ResponsiveDrawer from './components/Layout'
+import Layout from './components/Layout'
+import ContentWindow from './components/Content-window'
 
 function App() {
   return (
     <div className="App">
-      <ResponsiveDrawer />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route path="api/:id" element={<ContentWindow />} />
+        </Route>
+      </Routes>
+      <Layout />
     </div>
   )
 }
 
-export default App
+export default hot(App)
