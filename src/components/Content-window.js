@@ -4,12 +4,13 @@ import { useSelector } from 'react-redux'
 import { Typography } from '@mui/material'
 import useAction from '../hooks/useAction'
 import Loader from './Loader'
+import ErrorMessage from './Error-message'
 import { selectContentMemo } from '../selectors'
 
 const ContentWindow = () => {
   const { id } = useParams()
 
-  const { load, content } = useSelector(selectContentMemo)
+  const { load, content, error } = useSelector(selectContentMemo)
 
   const { fetchContent } = useAction()
 
@@ -19,6 +20,10 @@ const ContentWindow = () => {
 
   if (load) {
     return <Loader />
+  }
+
+  if (error) {
+    return <ErrorMessage text={error} />
   }
 
   return content ? (

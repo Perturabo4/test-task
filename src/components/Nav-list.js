@@ -7,10 +7,11 @@ import Toolbar from '@mui/material/Toolbar'
 import useAction from '../hooks/useAction'
 import Item from './Nav-list-item'
 import Loader from './Loader'
+import ErrorMessage from './Error-message'
 import { selectListMemo } from '../selectors'
 
 function NavList() {
-  const { load, list } = useSelector(selectListMemo)
+  const { load, list, error } = useSelector(selectListMemo)
 
   const { fetchArticles } = useAction()
 
@@ -20,6 +21,10 @@ function NavList() {
 
   if (load) {
     return <Loader />
+  }
+
+  if (error) {
+    return <ErrorMessage text={error} />
   }
 
   return (
