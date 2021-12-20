@@ -10,7 +10,6 @@ import Loader from './Loader'
 import { selectListMemo } from '../selectors'
 
 function NavList() {
-  // const { load, list } = useSelector((state) => state.list)
   const { load, list } = useSelector(selectListMemo)
 
   const { fetchArticles } = useAction()
@@ -23,14 +22,12 @@ function NavList() {
     return <Loader />
   }
 
-  console.log('RENDER LIST')
-
   return (
     <div>
       <Toolbar />
       <Divider />
       <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        <nav aria-label="main mailbox folders">
+        <nav aria-label='main mailbox folders'>
           <List>
             {list.map(({ title, id }) => {
               return <Item text={title} key={id} id={id} />

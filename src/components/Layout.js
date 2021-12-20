@@ -25,12 +25,11 @@ function Layout(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined
 
-  console.log('Drawer RENDER!')
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar
-        position="fixed"
+        position='fixed'
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
@@ -38,27 +37,27 @@ function Layout(props) {
       >
         <Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
+            color='inherit'
+            aria-label='open drawer'
+            edge='start'
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: 'none' } }}
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Responsive drawer
+          <Typography variant='h6' noWrap component='div'>
+            Test App
           </Typography>
         </Toolbar>
       </AppBar>
       <Box
-        component="nav"
+        component='nav'
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
+        aria-label='mailbox folders'
       >
         <Drawer
           container={container}
-          variant="temporary"
+          variant='temporary'
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
@@ -75,7 +74,7 @@ function Layout(props) {
           <NavList />
         </Drawer>
         <Drawer
-          variant="permanent"
+          variant='permanent'
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': {
@@ -89,7 +88,7 @@ function Layout(props) {
         </Drawer>
       </Box>
       <Box
-        component="main"
+        component='main'
         sx={{
           flexGrow: 1,
           p: 3,

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { Typography } from '@mui/material'
 import useAction from '../hooks/useAction'
 import Loader from './Loader'
 import { selectContentMemo } from '../selectors'
@@ -8,13 +9,9 @@ import { selectContentMemo } from '../selectors'
 const ContentWindow = () => {
   const { id } = useParams()
 
-  //   console.log('Rerender ' + id)
-  //   const { load, content, error } = useSelector((state) => state.content)
   const { load, content } = useSelector(selectContentMemo)
 
   const { fetchContent } = useAction()
-
-  console.log('Rerender ' + id, content && content.summary, load)
 
   useEffect(() => {
     fetchContent(id)
@@ -24,7 +21,28 @@ const ContentWindow = () => {
     return <Loader />
   }
 
-  return content ? content.summary : null
+  return content ? (
+    <>
+      <Typography
+        variant='h3'
+        component='h2'
+        align='center'
+        style={{ marginBottom: '30px' }}
+      >
+        {content.title}
+      </Typography>
+      <div>
+        <img
+          src={content.imageUrl}
+          alt='IMG'
+          width='300'
+          height='300'
+          style={{ float: 'left', paddingRight: '10px' }}
+        />
+        <Typography paragraph={true}>{content.summary}</Typography>
+      </div>
+    </>
+  ) : null
 }
 
 export default React.memo(ContentWindow)

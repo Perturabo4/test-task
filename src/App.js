@@ -7,10 +7,10 @@ import ContentWindow from './components/Content-window'
 
 function App() {
   return (
-    <div className="App">
+    <div className='App'>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="api/:id" element={<ContentWindow />} />
+        <Route path='/' element={<Layout />}>
+          <Route path='api/:id' element={<ContentWindow />} />
         </Route>
       </Routes>
       <Layout />

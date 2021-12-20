@@ -42,7 +42,6 @@ export const fetchContent = (id) => {
 }
 
 export const setMobileOpen = () => {
-  console.log('open mobile')
   return (dispatch) => {
     dispatch({ type: actions.SET_MOBILE_OPEN })
   }
